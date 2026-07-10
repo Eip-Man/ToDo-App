@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="/src/main.js"></script>
+    <title>todo-app</title>
+  </head>
+  <body
+    class="overflow-x-hidden bg-lighter xl:grid xl:grid-cols-[220px_minmax(100px,1fr)] xl:mx-auto xl:max-w-450"
+  >
+    <header
+      class="min-w-50 max-w-65 pt-7 pr-7 border-r border-black/20 hidden xl:block"
+    >
+      <!-- dopebox or github nav -->
+      <div class="flex justify-between">
+        <!-- close button -->
+        <h1 class="tracking-tight text-2xl ml-7 font-serif">Zecco</h1>
+        <button
+          aria-label="Open menu"
+          class="*:border space-x-1 rotate-90 cursor-pointer"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <p
+        class="mt-1.5 tracking-wider uppercase opacity-80 text-[12px] ml-7 font-serif"
+      >
+        Task Manager
+      </p>
+      <nav class="mt-9">
+        <ul class="space-y-3">
+          <li class="">
+            <button class="js-class">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="opacity-65 group-focus:opacity-100"
+                aria-hidden="true"
+              >
+                <rect width="7" height="7" x="3" y="3" rx="1" />
+                <rect width="7" height="7" x="14" y="3" rx="1" />
+                <rect width="7" height="7" x="14" y="14" rx="1" />
+                <rect width="7" height="7" x="3" y="14" rx="1" />
+              </svg>
+              <span class="opacity-65 group-hover:opacity-100">All Tasks</span>
+            </button>
+          </li>
+
+          <li class="">
+            <button class="js-class">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="opacity-65 group-focus:opacity-100"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+              </svg>
+              <span class="opacity-65 group-hover:opacity-100">Today</span>
+            </button>
+          </li>
+          <li class="">
+            <button class="js-class">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="opacity-65 group-focus:opacity-100"
+              >
+                <path d="M8 2v4" />
+                <path d="M16 2v4" />
+                <rect width="18" height="18" x="3" y="4" rx="2" />
+                <path d="M3 10h18" />
+              </svg>
+              <span class="opacity-65 group-hover:opacity-100">Upcoming</span>
+            </button>
+          </li>
+          <li class="">
+            <button class="js-class">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="opacity-65 group-focus:opacity-100"
+              >
+                <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+                <path d="m9 11 3 3L22 4" />
+              </svg>
+              <span class="opacity-65 group-hover:opacity-100">Completed</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main
+      class="md:grid grid-cols-[350px_minmax(0px,1fr)] rounded-xl mt-3 lg:grid lg:grid-cols-[450px_minmax(0,1fr)] lg:gap-x-5"
+    >
+      <section
+        class="flex justify-between w-full col-span-full px-7 py-3.5 border-b border-b-gray-200"
+      >
+        <button
+          title="Open menu"
+          aria-hidden="true"
+          class="*:border space-x-1 rotate-90 cursor-pointer xl:hidden"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <h2 class="font-medium text-xl tracking-tight w-full ml-7 xl:ml-0">
+          Dashboard
+        </h2>
+        <!-- search bar -->
+
+        <div class="flex space-x-10 my-auto">
+          <div class="flex rounded-2xl md:bg-gray-200/40">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="ml-2.5 my-auto md:opacity-40 w-5 cursor-pointer"
+              aria-hidden="true"
+            >
+              <path d="m21 21-4.34-4.34" />
+              <circle cx="11" cy="11" r="8" />
+            </svg>
+            <label for="task-search" class="sr-only">Search tasks</label>
+            <input
+              aria-hidden="true"
+              id="task-search"
+              type="text"
+              name="gsearch"
+              class="px-3 text-sm md:w-50 h-5 hidden md:block outline-0"
+              placeholder="Search..."
+            />
+          </div>
+          <!-- dark mode toggle -->
+          <button aria-label="Darkmode toggle button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="cursor-pointer -ml-5"
+              aria-hidden="true"
+            >
+              <path
+                d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+              />
+            </svg>
+          </button>
+        </div>
+      </section>
+      <section>
+        <div class="ml-4 mt-3 tracking-tighter">
+          <h2 class="font-serif text-3xl font">Good evening.</h2>
+          <p>
+            <span class="font-semibold">2</span>
+            <span class="opacity-55">pending tasks.</span>
+          </p>
+        </div>
+        <article
+          class="bg-white rounded-2xl mx-4 mt-5 px-5 py-4 min-w-50 shadow-sm pt-6"
+        >
+          <div class="flex justify-between">
+            <h3 class="font-serif text-[17px]">Productivity</h3>
+            <p class="bg-gray-200/40 rounded-md text-sm px-3 py-0.5">
+              25% Done
+            </p>
+          </div>
+          <div class="md:flex mt-1.5">
+            <!-- circle -->
+            <div
+              class="bg-transparent rounded-full size-23 border-12 border-gray-400/40 z-1 shrink-0"
+            ></div>
+
+            <div
+              class="grid grid-cols-2 h-fit w-full gap-y-1.5 mt-3 md:ml-4 md:my-auto"
+            >
+              <p class="col-1 opacity-75 text-[13px]">
+                <span
+                  class="size-2 bg-green-600 rounded-full mr-1.5 inline-block"
+                ></span
+                >Completed
+              </p>
+              <p class="row-2 opacity-75 text-[13px]">
+                <span
+                  class="size-2 bg-gray-400 rounded-full mr-1.5 inline-block"
+                ></span
+                >Pending
+              </p>
+              <p class="text-end font-semibold text-[13px]">1</p>
+              <p class="text-end font-semibold text-[13px]">3</p>
+            </div>
+          </div>
+          <span class="border-t mt-5 border-t-gray-200 block"></span>
+          <p class="p-2 mt-1 italic opacity-65">Let's focus on priorities.</p>
+        </article>
+      </section>
+      <!-- calender js -->
+      <aside
+        class="md:row-start-3 md:row-end-3 bg-black text-white rounded-2xl ml-3 mr-4 px-5 mt-4.5 min-w-50 pb-5"
+      >
+        <p class="uppercase pt-4 text-[11px] opacity-30 tracking-widest">
+          today
+        </p>
+        <h3 class="mt-1 text-3xl tracking-tighter font-serif opacity-95">
+          Saturday
+        </h3>
+        <p class="opacity-55 font-light -mt-0.5">February 7</p>
+        <span class="mt-35 border-t border-t-gray-200/10 block"></span>
+        <div class="flex gap-3 size-fit mt-4">
+          <div class="my-auto bg-gray-200/10 rounded-md py-0.5 px-1.5">
+            <svg
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-5 opacity-60"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 6v6l4 2" />
+            </svg>
+          </div>
+          <div class="">
+            <p class="">Focus Time</p>
+            <p class="opacity-30 text-sm">Stay productive.</p>
+          </div>
+        </div>
+      </aside>
+      <!-- task section -->
+      <section
+        class="mr-4 mt-3 py-5 bg-white rounded-3xl md:row-span-2 min-w-55"
+      >
+        <div class="flex justify-between">
+          <h2 class="font-serif tracking-wide text-xl pl-5 js-title">My Tasks</h2>
+          <p
+            class="mr-5 bg-gray-200/50 rounded-full size-fit text-[11px] px-1.5"
+          >
+            0
+          </p>
+        </div>
+        <div
+          id="divContainer"
+          class="flex mt-7 hover:bg-gray-200/50 p-2.5 pl-5 mx-4.5 rounded-2xl relative"
+        >
+          <button
+            id="create"
+            class="text-white p-1.5 bg-black rounded-full cursor-pointer z-0"
+          >
+            <svg
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 12h14" />
+              <path d="M12 5v14" />
+            </svg>
+          </button>
+          <div class="flex group">
+            <form>
+              <label for="createTask" class="sr-only">Task</label>
+              <input
+                type="text"
+                id="createTask"
+                placeholder="Add a new task..."
+                class="ml-5 my-auto placeholder:opacity-65 w-full md:w-95 outline-0"
+              />
+            </form>
+            <p
+              id="mediaQuery"
+              class="opacity-20 outline-1 h-fit px-1 rounded-sm text-[10px] absolute ml-40 my-1.5 group-focus-within:hidden"
+            >
+              N
+            </p>
+          </div>
+        </div>
+        <p id="preventEmptyText" class="text-red-400 text-center my-2"></p>
+        <p id="preventEmptyText2" class="text-red-400 text-center my-2"></p>
+
+        <div class="form-container"></div>
+
+        <span class="mt-7 border-t border-t-gray-200/50 block"></span>
+        <div id="taskDiv" class="flex-row h-9/12">
+          <p id="removeTask" class="italic opacity-30 m-auto w-fit">
+            No tasks found
+          </p>
+        </div>
+        
+        <!-- container div card  -->
+
+        <!-- section -->
+      </section>
+    </main>
+    
+  </body>
+</html>
+<!-- rreplace div with buttons-->
+<!-- replace hover navbar title  -->
+ <!-- fix grid on task @ screen 344 capture etc should be at the bottom title top. grid -->
