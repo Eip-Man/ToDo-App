@@ -3,12 +3,12 @@
 @theme {
   --color-lighter: oklch(98.511% 0.00011 271.152);
   --color-light: oklch(98.156% 0.00253 107.12);
+  --color-darkMode: oklch(14.6% 0.006 69.2);
 }
 
-/* @utility grid-cols-autofit {
-  grid-template-columns: repeat(auto-fit, minmax(3.125rem, 1fr));
+/* @utility grid-auto {
+  grid-template-columns: 21.875rem minmax(0px, 1fr);
 } */
-
 
 @media (max-width: 318px) {
   #grid-card {
@@ -25,8 +25,4 @@
   }
 }
 
-/* @layer {
-  color-red. {
-    background-color: oklch(98.511% 0.00011 271.152);
-  }
-} */
+@custom-variant dark (&:where(.dark, .dark *));

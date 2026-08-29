@@ -1,4 +1,3 @@
-
 export const nav = () => {
   const loop = document.querySelectorAll(".js-class");
   for (let i = 0; i < loop.length; i++) {
@@ -20,6 +19,8 @@ export const nav = () => {
       "focus:opacity-100",
       "cursor-pointer",
       "duration-200",
+      "dark:hover:bg-gray-200/20",
+      "dark:focus:bg-gray-100/35"
     );
   }
 };

@@ -8,26 +8,41 @@
     <title>todo-app</title>
   </head>
   <body
-    class="overflow-x-hidden bg-lighter xl:grid xl:grid-cols-[220px_minmax(100px,1fr)] xl:mx-auto xl:max-w-450"
+    class="bg-lighter dark:bg-darkMode xl:grid xl:grid-cols-[220px_minmax(100px,1fr)] xl:mx-auto xl:max-w-450"
   >
     <header
-      class="min-w-50 max-w-65 pt-7 pr-7 border-r border-black/20 hidden xl:block"
+      id="js-header"
+      class="min-w-50 max-w-65 pt-7 pr-7 xl:border-r border-black/20 hidden xl:block dark:border-r-gray-200/10"
     >
       <!-- dopebox or github nav -->
       <div class="flex justify-between">
         <!-- close button -->
-        <h1 class="tracking-tight text-2xl ml-7 font-serif">Zecco</h1>
+        <h1 class="tracking-tight text-2xl ml-7 font-serif dark:text-white">
+          Zecco
+        </h1>
         <button
-          aria-label="Open menu"
-          class="*:border space-x-1 rotate-90 cursor-pointer"
+          id="close-button"
+          class="relative group hidden xl:hidden hover:cursor-pointer"
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <svg
+            class="size-6 text-gray-800 dark:text-white opacity-55"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18 17.94 6M18 18 6.06 6"
+            />
+          </svg>
         </button>
       </div>
       <p
-        class="mt-1.5 tracking-wider uppercase opacity-80 text-[12px] ml-7 font-serif"
+        class="mt-1.5 tracking-widest uppercase opacity-80 text-[12px] ml-7 font-serif dark:text-gray-100/50"
       >
         Task Manager
       </p>
@@ -45,7 +60,7 @@
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="opacity-65 group-focus:opacity-100"
+                class="opacity-65 group-focus:opacity-100 dark:text-gray-100/90"
                 aria-hidden="true"
               >
                 <rect width="7" height="7" x="3" y="3" rx="1" />
@@ -53,7 +68,10 @@
                 <rect width="7" height="7" x="14" y="14" rx="1" />
                 <rect width="7" height="7" x="3" y="14" rx="1" />
               </svg>
-              <span class="opacity-65 group-hover:opacity-100">All Tasks</span>
+              <span
+                class="opacity-65 group-hover:opacity-100 dark:text-white dark:opacity-70"
+                >All Tasks</span
+              >
             </button>
           </li>
 
@@ -69,13 +87,16 @@
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="opacity-65 group-focus:opacity-100"
+                class="opacity-65 group-focus:opacity-100 dark:text-gray-100/90"
                 aria-hidden="true"
               >
                 <circle cx="12" cy="12" r="10" />
                 <path d="M12 6v6l4 2" />
               </svg>
-              <span class="opacity-65 group-hover:opacity-100">Today</span>
+              <span
+                class="opacity-65 group-hover:opacity-100 dark:text-white dark:opacity-70"
+                >Today</span
+              >
             </button>
           </li>
           <li class="">
@@ -90,14 +111,17 @@
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="opacity-65 group-focus:opacity-100"
+                class="opacity-65 group-focus:opacity-100 dark:text-gray-100/90"
               >
                 <path d="M8 2v4" />
                 <path d="M16 2v4" />
                 <rect width="18" height="18" x="3" y="4" rx="2" />
                 <path d="M3 10h18" />
               </svg>
-              <span class="opacity-65 group-hover:opacity-100">Upcoming</span>
+              <span
+                class="opacity-65 group-hover:opacity-100 dark:text-white dark:opacity-70"
+                >Upcoming</span
+              >
             </button>
           </li>
           <li class="">
@@ -112,147 +136,245 @@
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="opacity-65 group-focus:opacity-100"
+                class="opacity-65 group-focus:opacity-100 dark:text-gray-100/90"
               >
                 <path d="M21.801 10A10 10 0 1 1 17 3.335" />
                 <path d="m9 11 3 3L22 4" />
               </svg>
-              <span class="opacity-65 group-hover:opacity-100">Completed</span>
+              <span
+                class="opacity-65 group-hover:opacity-100 dark:text-white dark:opacity-70"
+                >Completed</span
+              >
             </button>
           </li>
         </ul>
       </nav>
     </header>
     <main
-      class="md:grid grid-cols-[350px_minmax(0px,1fr)] rounded-xl mt-3 lg:grid lg:grid-cols-[450px_minmax(0,1fr)] lg:gap-x-5"
+      class="sm:max-md:grid md:grid grid-cols-[350px_minmax(0px,1fr)] rounded-xl mt-3 lg:grid lg:grid-cols-[450px_minmax(0,1fr)] lg:gap-x-5"
     >
       <section
-        class="flex justify-between w-full col-span-full px-7 py-3.5 border-b border-b-gray-200"
+        class="flex items-center justify-between pb-2 md w-full col-span-full border-b border-b-gray-200 dark:border-b-gray-200/10"
       >
-        <button
-          title="Open menu"
-          aria-hidden="true"
-          class="*:border space-x-1 rotate-90 cursor-pointer xl:hidden"
+        <div class="relative group mt-1 ml-7">
+          <button
+            id="js-nav"
+            class="*:border space-x-1 rotate-90 cursor-pointer xl:hidden dark:text-white"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <p
+            class="hidden mt-0.5 px-1 py-0.5 -right-7 absolute group-has-hover:block bg-black/70 text-white rounded font-serif text-[11px] text-nowrap dark:bg-black"
+          >
+            Open Menu
+          </p>
+        </div>
+        <h2
+          id="dashboard-js"
+          class="font-medium text-xl tracking-tight w-full ml-7 xl:ml-0 dark:text-white h-fit pt-0.5"
         >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <h2 class="font-medium text-xl tracking-tight w-full ml-7 xl:ml-0">
           Dashboard
         </h2>
-        <!-- search bar -->
+        <!-- NEW DIV FOR RESPONSIVE SEARCH BOX OPEN -->
+        <div id="mobile-search-container"></div>
 
-        <div class="flex space-x-10 my-auto">
-          <div class="flex rounded-2xl md:bg-gray-200/40">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="ml-2.5 my-auto md:opacity-40 w-5 cursor-pointer"
-              aria-hidden="true"
+        <div
+          id="search-box"
+          class="p-2 rounded-full shrink-0 hover:bg-black/10 dark:hover:bg-gray-400/20 cursor-pointer md:hidden"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="size-5 dark:text-white"
+            aria-hidden="true"
+          >
+            <path d="m21 21-4.34-4.34" />
+            <circle cx="11" cy="11" r="8" />
+          </svg>
+        </div>
+        <!-- NEW DIV FOR RESPONSIVE SEARCH BOX CLOSED -->
+
+        <!-- search bar desktop-->
+        <div class="flex rounded-full md:py-2">
+          <div
+            id="search-wrapper"
+            class="hidden md:flex items-center md:bg-gray-200/40 dark:md:bg-gray-200/20 p-0.5 rounded-full hover:bg-black/10 dark:hover:bg-gray-400/20 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-black/70 dark:focus-within:outline-white/20"
+          >
+            <div
+              class="p-1.5 rounded-full md:p-0 md:rounded-none md:bg-transparent md:hover:bg-transparent md:my-auto"
             >
-              <path d="m21 21-4.34-4.34" />
-              <circle cx="11" cy="11" r="8" />
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="md:ml-2.5 md:opacity-40 size-5 dark:text-white search-svg"
+                aria-hidden="true"
+              >
+                <path d="m21 21-4.34-4.34" />
+                <circle cx="11" cy="11" r="8" />
+              </svg>
+            </div>
             <label for="task-search" class="sr-only">Search tasks</label>
             <input
-              aria-hidden="true"
               id="task-search"
               type="text"
               name="gsearch"
-              class="px-3 text-sm md:w-50 h-5 hidden md:block outline-0"
+              class="hidden md:block px-3 dark:text-white md:w-50 outline-0 dark:placeholder:text-gray-200/40 text-sm"
               placeholder="Search..."
             />
           </div>
-          <!-- dark mode toggle -->
-          <button aria-label="Darkmode toggle button">
+          <!-- Dark Mode Toggle -->
+          <button
+            id="js-darkmode"
+            class="mx-3 flex size-9 shrink-0 items-center justify-center rounded-full hover:bg-black/10 dark:hover:bg-gray-200/10 cursor-pointer"
+            aria-label="Darkmode toggle button"
+          >
+            <!-- Moon -->
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="cursor-pointer -ml-5"
+              class="size-5 dark:hidden"
               aria-hidden="true"
             >
               <path
                 d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
               />
             </svg>
+
+            <!-- Sun -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="hidden size-5 dark:block dark:text-white"
+              aria-hidden="true"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 5V3m0 18v-2M7.05 7.05 5.636 5.636m12.728 12.728L16.95 16.95M5 12H3m18 0h-2M7.05 16.95l-1.414 1.414M18.364 5.636 16.95 7.05M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
+              />
+            </svg>
           </button>
         </div>
       </section>
+
       <section>
+        <!-- flex -->
         <div class="ml-4 mt-3 tracking-tighter">
-          <h2 class="font-serif text-3xl font">Good evening.</h2>
+          <h2 class="font-serif text-3xl font dark:text-white">
+            Good evening.
+          </h2>
           <p>
-            <span class="font-semibold">2</span>
-            <span class="opacity-55">pending tasks.</span>
+            <span id="tasksPending" class="font-semibold dark:text-white"
+              >0</span
+            >
+            <span class="opacity-55 dark:text-gray-100/70">pending tasks.</span>
           </p>
         </div>
         <article
-          class="bg-white rounded-2xl mx-4 mt-5 px-5 py-4 min-w-50 shadow-sm pt-6"
+          class="bg-white rounded-2xl mx-4 mt-5 px-5 py-4 min-w-50 shadow-sm pt-6 dark:bg-gray-200/10 dark:border dark:border-gray-200/5"
         >
           <div class="flex justify-between">
-            <h3 class="font-serif text-[17px]">Productivity</h3>
-            <p class="bg-gray-200/40 rounded-md text-sm px-3 py-0.5">
-              25% Done
+            <h3 class="font-serif text-[17px] dark:text-white">Productivity</h3>
+            <p
+              class="bg-gray-200/40 rounded-md text-sm px-2 py-0.5 dark:bg-gray-200/10 dark:text-gray-200/35"
+            >
+              <span id="task-progress">0</span>% Done
             </p>
           </div>
           <div class="md:flex mt-1.5">
             <!-- circle -->
             <div
-              class="bg-transparent rounded-full size-23 border-12 border-gray-400/40 z-1 shrink-0"
-            ></div>
+              class="bg-transparent rounded-full size-23 border-12 border-gray-400/40 shrink-0 relative dark:border-white"
+            >
+              <p
+                id="completeId"
+                class="absolute right-8 bottom-6 dark:text-white"
+              >
+                0
+              </p>
+            </div>
 
             <div
               class="grid grid-cols-2 h-fit w-full gap-y-1.5 mt-3 md:ml-4 md:my-auto"
             >
-              <p class="col-1 opacity-75 text-[13px]">
+              <p class="col-1 opacity-75 text-[13px] dark:text-gray-200/80">
                 <span
-                  class="size-2 bg-green-600 rounded-full mr-1.5 inline-block"
+                  class="size-2 bg-green-600 rounded-full mr-1.5 inline-block dark:bg-green-400"
                 ></span
                 >Completed
               </p>
-              <p class="row-2 opacity-75 text-[13px]">
+              <p class="row-2 opacity-75 text-[13px] dark:text-gray-200/80">
                 <span
-                  class="size-2 bg-gray-400 rounded-full mr-1.5 inline-block"
+                  class="size-2 bg-gray-400 rounded-full mr-1.5 inline-block dark:bg-gray-700"
                 ></span
                 >Pending
               </p>
-              <p class="text-end font-semibold text-[13px]">1</p>
-              <p class="text-end font-semibold text-[13px]">3</p>
+              <p
+                id="completion"
+                class="text-end font-semibold text-[13px] dark:text-white"
+              >
+                0
+              </p>
+              <p
+                id="pending"
+                class="text-end font-semibold text-[13px] dark:text-white"
+              >
+                0
+              </p>
             </div>
           </div>
-          <span class="border-t mt-5 border-t-gray-200 block"></span>
-          <p class="p-2 mt-1 italic opacity-65">Let's focus on priorities.</p>
+          <span
+            class="border-t mt-5 border-t-gray-200 block dark:border-t-gray-500/10"
+          ></span>
+          <p class="p-2 mt-1 italic opacity-65 dark:text-gray-100/70 text-sm">
+            Let's focus on priorities.
+          </p>
         </article>
       </section>
       <!-- calender js -->
       <aside
-        class="md:row-start-3 md:row-end-3 bg-black text-white rounded-2xl ml-3 mr-4 px-5 mt-4.5 min-w-50 pb-5"
+        class="md:row-start-3 md:row-end-3 bg-darkMode text-white rounded-2xl ml-3 mr-4 px-5 mt-4.5 min-w-50 max-h-fit pb-5 dark:bg-white"
       >
-        <p class="uppercase pt-4 text-[11px] opacity-30 tracking-widest">
+        <p
+          class="uppercase pt-4 text-[11px] opacity-30 tracking-widest dark:text-gray-600"
+        >
           today
         </p>
-        <h3 class="mt-1 text-3xl tracking-tighter font-serif opacity-95">
-          Saturday
-        </h3>
-        <p class="opacity-55 font-light -mt-0.5">February 7</p>
-        <span class="mt-35 border-t border-t-gray-200/10 block"></span>
+        <h3
+          id="day-js"
+          class="mt-1 text-3xl tracking-tighter font-serif opacity-95 capitalize dark:text-black"
+        ></h3>
+        <p
+          id="month-js"
+          class="opacity-55 font-light -mt-0.5 capitalize dark:text-gray-950"
+        ></p>
+        <span
+          class="mt-35 border-t border-t-gray-200/10 block dark:border-gray-200"
+        ></span>
         <div class="flex gap-3 size-fit mt-4">
-          <div class="my-auto bg-gray-200/10 rounded-md py-0.5 px-1.5">
+          <div
+            class="my-auto bg-gray-200/10 rounded-lg py-1.5 px-2 dark:bg-gray-200/80"
+          >
             <svg
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
@@ -264,37 +386,44 @@
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="w-5 opacity-60"
+              class="w-5 opacity-85 dark:text-black/90"
             >
               <circle cx="12" cy="12" r="10" />
               <path d="M12 6v6l4 2" />
             </svg>
           </div>
-          <div class="">
-            <p class="">Focus Time</p>
-            <p class="opacity-30 text-sm">Stay productive.</p>
+          <div>
+            <p class="dark:text-black">Focus Time</p>
+            <p class="opacity-40 text-sm dark:text-gray-900">
+              Stay productive.
+            </p>
           </div>
         </div>
       </aside>
       <!-- task section -->
       <section
-        class="mr-4 mt-3 py-5 bg-white rounded-3xl md:row-span-2 min-w-55"
+        class="mr-4 mt-3 py-5 ml-3 bg-white shadow-sm rounded-3xl md:row-span-2 min-w-55 sm:max-md:col-span-full relative dark:bg-gray-200/10 dark:border dark:border-gray-200/5 md:h-160"
       >
         <div class="flex justify-between">
-          <h2 class="font-serif tracking-wide text-xl pl-5 js-title">My Tasks</h2>
+          <h2
+            class="font-serif tracking-wide text-xl pl-5 js-title dark:text-white"
+          >
+            My Tasks
+          </h2>
           <p
-            class="mr-5 bg-gray-200/50 rounded-full size-fit text-[11px] px-1.5"
+            id="tasksAmount"
+            class="mr-5 bg-gray-200/50 rounded-full size-fit text-[11px] px-1.5 dark:bg-gray-200/10 dark:text-white"
           >
             0
           </p>
         </div>
         <div
           id="divContainer"
-          class="flex mt-7 hover:bg-gray-200/50 p-2.5 pl-5 mx-4.5 rounded-2xl relative"
+          class="flex mt-7 hover:bg-gray-200/50 p-2.5 pl-5 mx-4.5 rounded-2xl relative dark:hover:bg-gray-200/10"
         >
           <button
             id="create"
-            class="text-white p-1.5 bg-black rounded-full cursor-pointer z-0"
+            class="text-white p-1.5 bg-black rounded-full cursor-pointer z-0 dark:bg-white dark:text-black"
           >
             <svg
               aria-hidden="true"
@@ -312,44 +441,48 @@
               <path d="M12 5v14" />
             </svg>
           </button>
-          <div class="flex group">
+          <div class="group relative mr-10 min-w-0 flex-1 items-center">
             <form>
               <label for="createTask" class="sr-only">Task</label>
               <input
                 type="text"
                 id="createTask"
                 placeholder="Add a new task..."
-                class="ml-5 my-auto placeholder:opacity-65 w-full md:w-95 outline-0"
+                class="my-auto ml-5 w-full wrap-break-word outline-0 font-sans placeholder:text-[17px] dark:text-white dark:placeholder:text-gray-100/70"
               />
             </form>
             <p
               id="mediaQuery"
-              class="opacity-20 outline-1 h-fit px-1 rounded-sm text-[10px] absolute ml-40 my-1.5 group-focus-within:hidden"
+              class="absolute top-2 left-45 h-fit rounded-sm px-1 text-[10px] opacity-20 outline-1 dark:text-gray-100 dark:outline-gray-200/60"
             >
               N
             </p>
           </div>
         </div>
-        <p id="preventEmptyText" class="text-red-400 text-center my-2"></p>
-        <p id="preventEmptyText2" class="text-red-400 text-center my-2"></p>
-
-        <div class="form-container"></div>
-
-        <span class="mt-7 border-t border-t-gray-200/50 block"></span>
-        <div id="taskDiv" class="flex-row h-9/12">
-          <p id="removeTask" class="italic opacity-30 m-auto w-fit">
-            No tasks found
-          </p>
+        <p id="preventEmptyText" class="text-red-400 absolute left-3/12"></p>
+        <p id="preventEmptyText2" class="text-red-400 left-5/10"></p>
+        <div class="md:h-9/11 md:overflow-y-auto">
+          <div class="form-container"></div>
+          <span
+            class="mt-7 border-t border-t-gray-200/50 block dark:border-t-gray-200/10"
+          ></span>
+          <div id="taskDiv">
+            <p
+              id="removeTask"
+              class="italic opacity-30 m-auto w-fit relative top-2 md:top-50 dark:text-white"
+            >
+              No tasks found
+            </p>
+          </div>
         </div>
-        
         <!-- container div card  -->
-
         <!-- section -->
       </section>
     </main>
-    
+    <div id="outer-parent"></div>
   </body>
 </html>
-<!-- rreplace div with buttons-->
-<!-- replace hover navbar title  -->
- <!-- fix grid on task @ screen 344 capture etc should be at the bottom title top. grid -->
+<!-- replace div with buttons-->
+<!-- fix spacing on nav and bg-color -->
+<!-- moon and sun, nav bar, form-container animation -->
+<!-- fix submit button -->
