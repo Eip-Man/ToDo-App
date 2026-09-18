@@ -163,7 +163,7 @@ export const wrapper = (task, _id) => {
   input.type = "date";
   input.name = "date";
   input.id = _id;
-  input.classList.add("text-sm", "ml-1.5", "w-27", "dark:text-white");
+  input.classList.add("text-sm", "ml-1.5", "w-27", "dark:text-gray-200/80");
   div2.append(input);
 
   const div4 = document.createElement("div");
@@ -184,9 +184,10 @@ export const wrapper = (task, _id) => {
   submitButton.innerText = "Submit";
   submitButton.classList.add(
     "opacity-50",
-    "hover:bg-gray-200/50",
-    "rounded-xs",
-    "px-1.5",
+    "rounded",
+    "hover:bg-black/10",
+    "dark:hover:bg-gray-400/20",
+    "px-2",
     "cursor-pointer",
     "dark:text-gray-200/80",
     "dark:opacity-100",
@@ -277,7 +278,7 @@ export const cardDivItem = (taskData, labelId) => {
   divTaskCard2.classList.add("max-md:row-span-2", "flex", "justify-center");
 
   const labelTaskCard = document.createElement("label");
-  labelTaskCard.classList.add("grid");
+  labelTaskCard.classList.add("grid", "relative");
   labelTaskCard.htmlFor = labelId;
 
   const inputTaskCard = document.createElement("input");
@@ -296,6 +297,8 @@ export const cardDivItem = (taskData, labelId) => {
     "border-gray-400",
     "bg-white",
     "transition-all",
+    "dark:transition-none",
+    "dark:duration-0",
     "checked:hidden",
     "hover:border-gray-500",
     "dark:bg-transparent",
@@ -307,12 +310,18 @@ export const cardDivItem = (taskData, labelId) => {
   svg.classList.add(
     "md:col-start-1",
     "md:row-start-1",
-    "hidden",
     "size-7",
     "self-center",
     "justify-self-center",
-    "peer-checked:block",
+    "opacity-0",
+    "absolute",
+    "peer-checked:opacity-100",
     "dark:text-white",
+    "transition-all",
+    "duration-250",
+    "dark:transition-none",
+    "dark:duration-0",
+    "ease-linear",
   );
 
   const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
@@ -386,6 +395,7 @@ export const cardDivItem = (taskData, labelId) => {
     "justify-center",
     "size-9",
     "hover:bg-black/10",
+    "dark:hover:bg-gray-200/20",
     "cursor-pointer",
     "group/focus",
   );
@@ -399,7 +409,7 @@ export const cardDivItem = (taskData, labelId) => {
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="size-5 opacity-50 md:opacity-0 md:group-hover:opacity-35 hover:duration-200 dark:group-hover:text-white dark:group-hover:opacity-75 dark:hover:opacity-100"
+              class="size-5 opacity-50 md:opacity-0 md:group-hover:opacity-35 hover:duration-200 dark:hover:text-white  group-hover/focus:dark:hover:opacity-100 dark:text-white"
             >
               <circle cx="12" cy="12" r="3" />
               <path d="M3 7V5a2 2 0 0 1 2-2h2" />
@@ -413,7 +423,7 @@ export const cardDivItem = (taskData, labelId) => {
   const pTaskCard2 = document.createElement("p");
   pTaskCard2.classList.add(
     "absolute",
-    "-bottom-4",
+    "-bottom-6",
     "hidden",
     "rounded",
     "bg-black/70",
@@ -441,21 +451,40 @@ export const cardDivItem = (taskData, labelId) => {
     "hover:bg-black/10",
     "cursor-pointer",
     "group/subtask",
+    "dark:hover:bg-gray-200/20",
+
     "js-subtask-icon",
   );
-  divTaskCard5.innerHTML = `<svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 16 16"
-              fill="currentColor"
-              class="size-5 opacity-50 md:opacity-0 md:group-hover:opacity-35 hover:duration-200 dark:group-hover:text-white dark:group-hover:opacity-75 dark:hover:opacity-100"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M6.22 4.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L8.94 8 6.22 5.28a.75.75 0 0 1 0-1.06Z"
-                clip-rule="evenodd"
-              />
-            </svg>
-`;
+
+  const divTaskCard5svg = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "svg",
+  );
+  divTaskCard5svg.setAttribute("viewBox", "0 0 16 16");
+  divTaskCard5svg.setAttribute("fill", "currentColor");
+  divTaskCard5svg.classList.add(
+    "size-5",
+    "opacity-50",
+    "md:opacity-0",
+    "md:group-hover:opacity-35",
+    "hover:duration-200",
+    "dark:hover:text-white",
+    "group-hover/subtask:dark:hover:opacity-100",
+    "dark:text-white",
+  );
+
+  const divTaskCard5svgPath = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "path",
+  );
+  divTaskCard5svgPath.setAttribute("fill-rule", "evenodd");
+  divTaskCard5svgPath.setAttribute(
+    "d",
+    "M6.22 4.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L8.94 8 6.22 5.28a.75.75 0 0 1 0-1.06Z",
+  );
+  divTaskCard5svgPath.setAttribute("clip-rule", "evenodd");
+  divTaskCard5svg.append(divTaskCard5svgPath);
+  divTaskCard5.append(divTaskCard5svg);
   divTaskCardContainer.append(divTaskCard5);
 
   const pTaskCard3 = document.createElement("p");
@@ -464,7 +493,7 @@ export const cardDivItem = (taskData, labelId) => {
     "hidden",
     "md:group-hover/subtask:block",
     "text-[11px]",
-    "-bottom-4",
+    "-bottom-6",
     "bg-black/70",
     "text-white",
     "px-1.5",
@@ -489,6 +518,7 @@ export const cardDivItem = (taskData, labelId) => {
     "justify-center",
     "rounded-xl",
     "hover:bg-black/10",
+    "dark:hover:bg-gray-200/20",
   );
   divTaskCard6.innerHTML = `<svg
               xmlns="http://www.w3.org/2000/svg"
@@ -496,7 +526,7 @@ export const cardDivItem = (taskData, labelId) => {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-5 opacity-50 md:opacity-0 md:group-hover:opacity-35 active:outline-1 dark:group-hover:text-white dark:group-hover:opacity-75 dark:hover:opacity-100 dark:active:outline-gray-200/80"
+              class="size-5 opacity-50 md:opacity-0 md:group-hover:opacity-35 hover:duration-200 dark:hover:text-white  group-hover/trash:dark:hover:opacity-100 dark:text-white dark:active:outline-gray-200/80"
             >
               <path
                 stroke-linecap="round"
@@ -514,13 +544,14 @@ export const cardDivItem = (taskData, labelId) => {
     "hidden",
     "md:group-hover/trash:block",
     "text-[11px]",
-    "-bottom-4",
+    "-bottom-6",
     "bg-black/70",
     "text-white",
     "px-1.5",
     "py-0.5",
     "rounded",
     "font-serif",
+    "dark:hover:bg-gray-200/20",
   );
   pTaskCard4.innerText = "Delete";
   divTaskCard6.append(pTaskCard4);
@@ -529,32 +560,35 @@ export const cardDivItem = (taskData, labelId) => {
   const subtaskContainer = document.createElement("div");
   subtaskContainer.dataset.id = labelId;
   subtaskContainer.classList.add(
-    "hidden",
+    "max-h-0",
+    "opacity-0",
+    "overflow-hidden",
+    "transition-[max-height,opacity,padding,margin]",
+    "duration-300",
     "relative",
     "mx-5",
     "flex",
-    "mt-1",
-    "h-20",
+    "min-w-0",
     "items-center",
     "rounded-2xl",
     "border",
     "border-gray-200/40",
-    "bg-white",
+    "dark:border-gray-200/10",
     "px-2.5",
     "shadow-2xs",
-    "dark:border-gray-200/10",
-    "dark:bg-transparent",
   );
   _divTask.append(subtaskContainer);
 
   //  USER INPUT CONTAINER
   const subParentDiv = document.createElement("div");
   subParentDiv.classList.add(
+    "min-h-0",
     "ml-7",
     "flex",
     "h-full",
     "items-center",
     "sm:ml-10",
+    "wrap-break-word",
   );
   subtaskContainer.append(subParentDiv);
   const subTaskButton = document.createElement("button");
@@ -565,6 +599,7 @@ export const cardDivItem = (taskData, labelId) => {
     "justify-center",
     "cursor-pointer",
     "hover:bg-black/10",
+    "dark:hover:bg-gray-200/20",
     "rounded-xl",
   );
   subParentDiv.append(subTaskButton);
@@ -585,7 +620,7 @@ export const cardDivItem = (taskData, labelId) => {
         </svg>`;
 
   const subtaskFormContainer = document.createElement("form");
-  subtaskFormContainer.classList.add("ml-2", "w-5/10");
+  subtaskFormContainer.classList.add("ml-2", "w-5/10", "min-h-0");
   subtaskContainer.append(subtaskFormContainer);
 
   const subtaskLabel = document.createElement("label");
@@ -595,7 +630,13 @@ export const cardDivItem = (taskData, labelId) => {
   const subtaskInput = document.createElement("input");
   subtaskInput.type = "text";
   subtaskInput.id = "subtask";
-  subtaskInput.classList.add("outline-0", "placeholder:opacity-60s");
+  subtaskInput.classList.add(
+    "outline-0",
+    "placeholder:opacity-60",
+    "w-full",
+    "dark:text-white",
+    "dark:placeholder:text-gray-100/70",
+  );
   subtaskInput.placeholder = "Add subtask...";
   subtaskFormContainer.append(subtaskInput);
 
@@ -617,12 +658,14 @@ export const cardDivItem = (taskData, labelId) => {
     divTaskCardContainer,
     divTaskCard5,
     subtaskContainer,
+    subParentDiv,
     subtaskInput,
     subTaskButton,
     subtaskNotice,
     subtaskFormContainer,
     _divTask,
     divTaskCard4,
+    divTaskCard5svg,
   };
 };
 
@@ -653,7 +696,12 @@ export const subtaskItem = (subtaskInputValue, tasksId) => {
   );
   const subtaskH4 = document.createElement("h4");
   subtaskH4.innerText = subtaskInputValue;
-  subtaskH4.classList.add("ml-7", "wrap-break-word");
+  subtaskH4.classList.add(
+    "ml-7",
+    "wrap-break-word",
+    "dark:text-white",
+    "dark:placeholder:text-gray-100/70",
+  );
   const subtaskTrashIcon = document.createElement("div");
   subtaskTrashIcon.classList.add(
     "group/x",
@@ -665,14 +713,15 @@ export const subtaskItem = (subtaskInputValue, tasksId) => {
     "justify-center",
     "rounded-xl",
     "hover:bg-black/10",
+    "dark:hover:bg-gray-200/20",
   );
-  subtaskTrashIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 opacity-35 active:size-5.5 dark:group-hover:text-white dark:group-hover:opacity-75 dark:hover:opacity-100 dark:active:outline-gray-200/80">
+  subtaskTrashIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 opacity-35 dark:text-white active:size-5.5 dark:group-hover:text-white dark:group-hover:opacity-75 dark:hover:opacity-100 dark:active:outline-gray-200/80">
       <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"></path>
     </svg>`;
   const subtaskParagraph = document.createElement("p");
   subtaskParagraph.classList.add(
     "absolute",
-    "bottom-1",
+    "-bottom-1",
     "hidden",
     "rounded",
     "bg-black/70",
@@ -681,7 +730,7 @@ export const subtaskItem = (subtaskInputValue, tasksId) => {
     "font-serif",
     "text-[10px]",
     "text-white",
-    "group-hover/x:block",
+    "md:group-hover/x:block",
   );
   subtaskParagraph.innerText = "Delete";
   subtaskInnerParent.append(subtaskH4, subtaskTrashIcon);
@@ -694,21 +743,31 @@ export const subtaskItem = (subtaskInputValue, tasksId) => {
 };
 
 // Fullscreen capture mode
-export const fullscreenFocusMode = (title) => {
+export const fullscreenFocusMode = (task) => {
   const fullscreenOuterParent = document.getElementById("outer-parent");
-
   const fullscreenParent = document.createElement("div");
   fullscreenParent.classList.add(
-    "absolute",
+    "fixed",
+    "z-10",
     "inset-0",
-    "w-screen",
+    "h-dvh",
     "overflow-hidden",
     "bg-darkMode",
+    "opacity-0",
+    "transition-all",
+    "duration-200",
+    "ease-out",
   );
+
   fullscreenOuterParent.append(fullscreenParent);
+
+  setTimeout(() => {
+    fullscreenParent.classList.add("opacity-100");
+  }, 100);
 
   const fullscreenCloseButton = document.createElement("button");
   fullscreenParent.append(fullscreenCloseButton);
+
   fullscreenCloseButton.classList.add(
     "absolute",
     "top-6",
@@ -718,24 +777,42 @@ export const fullscreenFocusMode = (title) => {
     "p-1",
     "hover:bg-gray-200/10",
   );
-  fullscreenCloseButton.innerHTML = `  <svg class="size-7 text-gray-200/50" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
-    </svg>`;
+
+  fullscreenCloseButton.innerHTML = `
+    <svg
+      class="size-7 text-gray-200/50"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18 17.94 6M18 18 6.06 6"
+      />
+    </svg>
+  `;
 
   const fullscreenInnerParent = document.createElement("div");
   fullscreenInnerParent.classList.add(
     "flex",
-    "h-screen",
+    "min-h-dvh",
     "max-w-full",
     "min-w-0",
     "items-center",
     "justify-center",
     "px-4",
+    "py-20",
   );
+
   fullscreenParent.append(fullscreenInnerParent);
 
   const fullscreenInnerParent2 = document.createElement("div");
   fullscreenInnerParent2.classList.add("max-w-full", "min-w-0", "text-center");
+
   fullscreenInnerParent.append(fullscreenInnerParent2);
 
   const fullscreenTime = document.createElement("p");
@@ -746,11 +823,24 @@ export const fullscreenFocusMode = (title) => {
     "tracking-wider",
     "text-gray-200/30",
   );
+
   fullscreenTime.innerText = "23:14";
   fullscreenInnerParent2.append(fullscreenTime);
 
   const fullscreenInnerParent3 = document.createElement("div");
-  fullscreenInnerParent3.classList.add("space-y-10");
+  fullscreenInnerParent3.classList.add(
+    "space-y-10",
+    "opacity-0",
+    "transition-transform",
+    "duration-300",
+    "-translate-y-4",
+    "ease-out",
+  );
+
+  setTimeout(() => {
+    fullscreenInnerParent3.classList.add("opacity-100", "translate-y-1");
+  }, 300);
+
   fullscreenInnerParent2.append(fullscreenInnerParent3);
 
   const fullscreenInnerParent3Text = document.createElement("p");
@@ -767,6 +857,7 @@ export const fullscreenFocusMode = (title) => {
     "text-gray-200/60",
     "uppercase",
   );
+
   fullscreenInnerParent3Text.innerText = "current focus";
 
   const fullscreenInnerParentH4 = document.createElement("h4");
@@ -777,8 +868,11 @@ export const fullscreenFocusMode = (title) => {
     "tracking-wide",
     "wrap-break-word",
     "text-white",
+    "text-center",
   );
-  fullscreenInnerParentH4.innerText = title;
+
+  fullscreenInnerParentH4.innerText = task;
+
   const fullscreenInnerParentButton = document.createElement("button");
   fullscreenInnerParentButton.classList.add(
     "mx-auto",
@@ -796,10 +890,22 @@ export const fullscreenFocusMode = (title) => {
     "ease-in-out",
     "hover:scale-105",
   );
-  fullscreenInnerParentButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6 shrink-0">
-            <path d="M21.801 10A10 10 0 1 1 17 3.335" />
-            <path d="m9 11 3 3L22 4" />
-          </svg>`;
+
+  fullscreenInnerParentButton.innerHTML = `
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="size-6 shrink-0"
+    >
+      <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+      <path d="m9 11 3 3L22 4" />
+    </svg>
+  `;
 
   fullscreenInnerParent3.append(
     fullscreenInnerParent3Text,
@@ -809,13 +915,21 @@ export const fullscreenFocusMode = (title) => {
 
   const fullscreenInnerParentText4 = document.createElement("p");
   fullscreenInnerParentText4.classList.add(
-    "text[17px]",
+    "text-[17px]",
     "min-w-0",
     "font-medium",
     "tracking-wide",
     "wrap-anywhere",
     "md:text-xl",
   );
+
   fullscreenInnerParentText4.innerText = "Complete Task";
+
   fullscreenInnerParentButton.append(fullscreenInnerParentText4);
+
+  return {
+    fullscreenCloseButton,
+    fullscreenParent,
+    fullscreenInnerParentButton,
+  };
 };

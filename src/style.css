@@ -6,10 +6,6 @@
   --color-darkMode: oklch(14.6% 0.006 69.2);
 }
 
-/* @utility grid-auto {
-  grid-template-columns: 21.875rem minmax(0px, 1fr);
-} */
-
 @media (max-width: 318px) {
   #grid-card {
     grid-template-columns: repeat(auto-fit, minmax(3.125rem, 1fr));

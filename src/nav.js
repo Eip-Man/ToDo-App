@@ -20,7 +20,7 @@ export const nav = () => {
       "cursor-pointer",
       "duration-200",
       "dark:hover:bg-gray-200/20",
-      "dark:focus:bg-gray-100/35"
+      "dark:focus:bg-gray-100/35",
     );
   }
 };
