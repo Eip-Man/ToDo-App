@@ -354,7 +354,7 @@ for (let i = 0; i < navItems.length; i++) {
         filteredTasks = tasks.filter((task) => task.completed === true);
         break;
     }
-
+    tasksAmount.innerText = filteredTasks.length;
     const taskCards = document.querySelectorAll("[data-id]");
     for (let j = 0; j < taskCards.length; j++) {
       const taskCardsResult = taskCards[j];
