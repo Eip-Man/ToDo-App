@@ -132,7 +132,12 @@ export const wrapper = (task, _id) => {
   }
 
   const div2 = document.createElement("div");
-  div2.classList.add("flex", "col-start-2", "md:col-start-auto");
+  div2.classList.add(
+    "flex",
+    "items-center",
+    "col-start-2",
+    "md:col-start-auto",
+  );
   div2.id = "placement";
   childDiv.append(div2);
   div2.innerHTML = `<svg 
@@ -198,13 +203,13 @@ export const wrapper = (task, _id) => {
   _buttonSvg.classList.add(
     "ml-3",
     "flex",
-    "size-9",
+    "size-7",
     "items-center",
     "justify-center",
     "rounded-md",
     "bg-black",
   );
-  _buttonSvg.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="col-4 size-6 cursor-pointer">
+  _buttonSvg.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="col-4 size-5 cursor-pointer">
     <path d="M20 4v7a4 4 0 0 1-4 4H4"></path>
     <path d="m9 10-5 5 5 5"></path>
   </svg>`;
