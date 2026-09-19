@@ -195,21 +195,19 @@ export const wrapper = (task, _id) => {
 
   const _buttonSvg = document.createElement("button");
   _buttonSvg.title = "Cancel";
-  _buttonSvg.innerHTML = `<svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="ml-3 cursor-pointer bg-black rounded-sm px-0.5 col-4 "
-            >
-              <path d="M20 4v7a4 4 0 0 1-4 4H4" />
-              <path d="m9 10-5 5 5 5" />
-            </svg>`;
+  _buttonSvg.classList.add(
+    "ml-3",
+    "flex",
+    "size-9",
+    "items-center",
+    "justify-center",
+    "rounded-md",
+    "bg-black",
+  );
+  _buttonSvg.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="col-4 size-6 cursor-pointer">
+    <path d="M20 4v7a4 4 0 0 1-4 4H4"></path>
+    <path d="m9 10-5 5 5 5"></path>
+  </svg>`;
   div4.append(submitButton, _buttonSvg);
 
   // usable @ main.js
