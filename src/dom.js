@@ -228,7 +228,7 @@ export const cardDivItem = (taskData, labelId) => {
     "pl-2",
     "pr-2.5",
     "border",
-    "border-gray-200/40",
+    "border-gray-200",
     "dark:border-gray-200/10",
     "shadow-2xs",
     "hover:shadow-md",
