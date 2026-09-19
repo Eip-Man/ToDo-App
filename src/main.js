@@ -429,7 +429,7 @@ navBar.addEventListener("click", () => {
     "xl:rounded-none",
     "xl:shadow-none",
     "dark:bg-darkMode",
-    "border-b",
+    "max-md:border-b",
     "border-r",
     "border-r-gray-200",
     "border-b-gray-200",
