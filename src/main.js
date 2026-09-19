@@ -221,7 +221,7 @@ create.addEventListener("click", () => {
     pending.innerText = pendingAmount;
     tasksAmount.innerText = pendingAmount;
     tasksPending.innerText = pendingAmount;
-    pNotFound.style.display = "none";
+    pNotFound.hidden = true;
 
     // Task trash Icon
     divCard.divTaskCard6.addEventListener("click", () => {
@@ -355,6 +355,13 @@ for (let i = 0; i < navItems.length; i++) {
         break;
     }
     tasksAmount.innerText = filteredTasks.length;
+    // Show "no tasks found" message when the filter returns nothing
+    if (filteredTasks.length <= 0) {
+      pNotFound.hidden = false;
+    } else {
+      pNotFound.hidden = true;
+    }
+
     const taskCards = document.querySelectorAll("[data-id]");
     for (let j = 0; j < taskCards.length; j++) {
       const taskCardsResult = taskCards[j];
