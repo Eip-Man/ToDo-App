@@ -345,13 +345,14 @@ export const cardDivItem = (taskData, labelId) => {
   divTaskCard3.classList.add("ml-3", "max-md:col-start-2", "max-md:col-end-7");
   const h3TaskCard = document.createElement("h3");
   h3TaskCard.classList.add(
-    "font-semibold",
     "text-xl",
     "mb-1.5",
     "group-has-checked:line-through",
     "group-has-checked:opacity-50",
     "dark:text-white",
     "wrap-break-word",
+    "font-sans",
+    "font-medium",
   );
   h3TaskCard.innerText = taskData.title;
   divTaskCardContainer.append(divTaskCard3);
@@ -381,7 +382,6 @@ export const cardDivItem = (taskData, labelId) => {
     "rounded-2xl",
     "text-[14px]",
     "capitalize",
-    
   );
 
   pTaskCardTwo.innerText = taskData.priority;
