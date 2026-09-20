@@ -162,12 +162,14 @@ create.addEventListener("click", () => {
           "bg-yellow-100/30",
           "dark:text-yellow-500/50",
           "dark:bg-yellow-700/20",
+          "group-has-checked:opacity-50",
         );
         divCard.pTaskCardTwo.classList.add(
           "text-yellow-500",
           "bg-yellow-100/30",
           "dark:text-yellow-500/50",
           "dark:bg-yellow-700/20",
+          "group-has-checked:opacity-50",
         );
         break;
       case "low":
@@ -176,12 +178,14 @@ create.addEventListener("click", () => {
           "bg-green-100/40",
           "dark:text-green-400",
           "dark:bg-green-700/20",
+          "group-has-checked:opacity-50",
         );
         divCard.pTaskCardTwo.classList.add(
           "text-green-500/70",
           "bg-green-100/40",
           "dark:text-green-400",
           "dark:bg-green-700/20",
+          "group-has-checked:opacity-50",
         );
         break;
       default:
@@ -190,12 +194,14 @@ create.addEventListener("click", () => {
           "bg-red-100/40",
           "dark:text-red-300",
           "dark:bg-red-700/20",
+          "group-has-checked:opacity-50",
         );
         divCard.pTaskCardTwo.classList.add(
           "text-red-500",
           "bg-red-100/40",
           "dark:text-red-300",
           "dark:bg-red-700/20",
+          "group-has-checked:opacity-50",
         );
     }
     // Increment the label ID for the next task
@@ -381,7 +387,9 @@ for (let i = 0; i < navItems.length; i++) {
 }
 // Show tasks matching the search query, hide the rest
 function updateSearchFilter(searchQuery) {
-  const matchingTask = tasks.filter((e) => e.title.includes(searchQuery));
+  const matchingTask = tasks.filter((e) =>
+    e.title.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
   const taskCards = document.querySelectorAll("[data-id]");
   for (let taskCard of taskCards) {
     const taskCardResult = taskCard;

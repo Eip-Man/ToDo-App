@@ -349,6 +349,7 @@ export const cardDivItem = (taskData, labelId) => {
     "text-xl",
     "mb-1.5",
     "group-has-checked:line-through",
+    "group-has-checked:opacity-50",
     "dark:text-white",
     "wrap-break-word",
   );
@@ -380,6 +381,7 @@ export const cardDivItem = (taskData, labelId) => {
     "rounded-2xl",
     "text-[14px]",
     "capitalize",
+    
   );
 
   pTaskCardTwo.innerText = taskData.priority;
