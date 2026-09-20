@@ -318,7 +318,7 @@ export const cardDivItem = (taskData, labelId) => {
     "justify-self-center",
     "opacity-0",
     "absolute",
-    "peer-checked:opacity-100",
+    "peer-checked:opacity-70",
     "dark:text-white",
     "transition-all",
     "duration-250",
